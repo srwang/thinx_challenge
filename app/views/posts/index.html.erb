@@ -9,7 +9,7 @@
 		<h1>Melon Forum</h1>
 	</header>
 
-	<%= form_tag('/posts#create', method: 'post') do %>
+	<%= form_tag('posts#create', method: 'post') do %>
 		<%= label_tag(:title, 'Title') %>
 		<%= text_field_tag(:title) %>
 		<%= label_tag(:content, 'Content') %>
@@ -20,8 +20,8 @@
 
 	<% @posts.each do |post| %>
 		<div class='post-wrapper'>
-			<h3><a href=''><%=post.title%></a></h3>
-			<p><%=post.content%></p>
+			<%= link_to post.title, post_path(post) %>
+			<p><%= truncate(post.content, length: 50, omission: '... (continued)') %></p>
 		</div>
 	<% end %>
 	

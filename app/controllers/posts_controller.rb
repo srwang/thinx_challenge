@@ -9,7 +9,13 @@ class PostsController < ApplicationController
 	end
 
 	def create
-		Post.create(title: params[:title], content: params[:content], user_id: session[:user_id]);
+		Post.create(title: params[:title], content: params[:content], user_id: session[:user_id])
+		redirect_to posts_path
+	end
+
+	def show
+		@post = Post.find(params[:id])
+		@comments = @post.comments
 	end
 
 private

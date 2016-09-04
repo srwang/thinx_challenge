@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title='Melon Forum'>
+	<link rel='stylesheet' href='index.css'>
+</head>
+<body>
+	<h1><%=@post.title%></h1>
+	<h3>By <%=@post.user.name%> at <%=@post.created_at%></h3>
+	<p><%=@post.content%></p>
+
+	<% @comments.each do |comment| %>
+		<p><%=comment.content%></p>
+		<p>By <%=comment.user.name%> at <%=comment.created_at%></p>
+	<% end %>
+
+	<%= form_tag("/posts/#{@post.id}/comments", method: 'post') do %>
+		<%= text_field_tag(:content) %>
+		<%= submit_tag('Reply') %>
+	<% end %>
+
+	<div class='comment-wrapper'>
+
+	</div>
+	
+</body>
+</html>
