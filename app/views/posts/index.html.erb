@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title='Melon Forum'>
+	<link rel='stylesheet' href='index.css'>
+</head>
+<body>
+	<header>
+		<h1>Melon Forum</h1>
+	</header>
+
+	<%= form_tag('/posts#create', method: 'post') do %>
+		<%= label_tag(:title, 'Title') %>
+		<%= text_field_tag(:title) %>
+		<%= label_tag(:content, 'Content') %>
+		<%= text_field_tag(:content) %>
+		<%= submit_tag('New Post') %>
+	<% end %>
+
+
+	<% @posts.each do |post| %>
+		<div class='post-wrapper'>
+			<h3><a href=''><%=post.title%></a></h3>
+			<p><%=post.content%></p>
+		</div>
+	<% end %>
+	
+</body>
+</html>

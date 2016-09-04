@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	</head>
+	<body id="log-in-body">
+		<h1>Log In</h1>
+		<p style="color: red"><%= flash[:error] %></p>
+
+		<div id="log-in-box">
+			<%= form_tag "/sessions" do  %>
+				<%= text_field_tag :username,nil, placeholder: "Username" %><br>
+				<%= password_field_tag :password, nil, placeholder: "Password" %><br>
+				<%= submit_tag "Log In" %>
+			<% end %>
+		</div>
+
+		<p style="color: red"><%= flash[:error_two] %></p>
+
+		<div id="sign-up-box">
+			<%= form_tag("/sessions/new", method: "get") do  %>
+				<%= text_field_tag :username, nil, placeholder: "Username" %><br>
+				<%= password_field_tag :password, nil, placeholder: "Password" %><br>
+				<%= password_field_tag :password_confirmation, nil, placeholder: "Confirm Password" %><br>
+			<%= submit_tag "Sign Up" %>
+			<% end %>
+		</div>
+	</body>
+</html>
