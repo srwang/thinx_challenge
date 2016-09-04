@@ -5,21 +5,30 @@
 	<link rel='stylesheet' href='index.css'>
 </head>
 <body>
-	<h1><%=@post.title%></h1>
-	<h3>By <%=@post.user.name%> at <%=@post.created_at%></h3>
-	<p><%=@post.content%></p>
-
-	<% @comments.each do |comment| %>
-		<p><%=comment.content%></p>
-		<p>By <%=comment.user.name%> at <%=comment.created_at%></p>
-	<% end %>
+	<section class='orig-post-wrapper'>
+		<h1><%=@post.title%></h1>
+		<p><%=@post.content%></p>
+		<p class='author-text'>By <%=@post.user.name%> at <%=@post.created_at.strftime('%b %d, %Y %I:%M%p')%></p>
 
 	<%= form_tag("/posts/#{@post.id}/comments", method: 'post') do %>
 		<%= text_field_tag(:content) %>
 		<%= submit_tag('Reply') %>
 	<% end %>
+	</section>
 
-	<div class='comment-wrapper'>
+	<div class='all-comments-wrapper'>
+
+		<% @comments.each do |comment| %>
+			<div class='comment-wrapper'>
+				<p><%=comment.content%></p>
+				<p class='author-text'>By <%=comment.user.name%> at <%=comment.created_at.strftime('%b %d, %Y %I:%M%p')%></p>
+
+				<%= form_tag("/posts/#{@post.id}/comments", method: 'post', class: 'reply-form') do %>
+					<%= text_field_tag(:content) %>
+					<%= submit_tag('Reply') %>
+				<% end %>
+			</div>
+		<% end %>
 
 	</div>
 	

@@ -10,20 +10,21 @@
 	</header>
 
 	<%= form_tag('posts#create', method: 'post') do %>
-		<%= label_tag(:title, 'Title') %>
-		<%= text_field_tag(:title) %>
-		<%= label_tag(:content, 'Content') %>
-		<%= text_field_tag(:content) %>
+		<%= label_tag(:title, 'Title') %> <br>
+		<%= text_field_tag(:title) %> <br>
+		<%= label_tag(:content, 'Content') %> <br>
+		<%= text_field_tag(:content) %> <br>
 		<%= submit_tag('New Post') %>
 	<% end %>
 
-
-	<% @posts.each do |post| %>
-		<div class='post-wrapper'>
-			<%= link_to post.title, post_path(post) %>
-			<p><%= truncate(post.content, length: 50, omission: '... (continued)') %></p>
-		</div>
-	<% end %>
+	<section id='all-posts-wrapper'>
+		<% @posts.each do |post| %>
+			<div class='post-wrapper'>
+				<%= link_to post.title, post_path(post) %>
+				<p><%= truncate(post.content, length: 180, omission: '... (continued)') %></p>
+			</div>
+		<% end %>
+	</section>
 	
 </body>
 </html>

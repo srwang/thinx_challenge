@@ -1,0 +1,42 @@
+body {
+  margin: 0px 50px;
+  font-family: Arial, sans-serif;
+  background-color: #ece5e5; }
+
+a {
+  color: green; }
+
+header {
+  font-size: 1.3em;
+  font-weight: lighter;
+  color: green; }
+
+#all-posts-wrapper, .all-comments-wrapper {
+  margin-top: 40px;
+  background-color: lightgray;
+  padding: 15px;
+  border: 1px solid gray; }
+
+.post-wrapper, .comment-wrapper {
+  background-color: white;
+  border: 1px dotted green;
+  margin-bottom: 15px;
+  padding: 15px; }
+
+.post-wrapper:last-child {
+  margin-bottom: 0px; }
+
+.orig-post-wrapper {
+  font-size: 1.2em;
+  margin-top: 70px;
+  color: green; }
+  .orig-post-wrapper h1 {
+    text-transform: uppercase; }
+
+.author-text {
+  font-size: 0.8em; }
+
+.reply-form {
+  text-align: right; }
+
+/*# sourceMappingURL=index.css.map */
