@@ -5,31 +5,52 @@
 	<link rel='stylesheet' href='index.css'>
 </head>
 <body>
-	<section class='orig-post-wrapper'>
-		<h1><%=@post.title%></h1>
-		<p><%=@post.content%></p>
-		<p class='author-text'>By <%=@post.user.name%> at <%=@post.created_at.strftime('%b %d, %Y %I:%M%p')%></p>
+	<nav>
+		<%= form_tag('/sessions/1', method: 'delete') do %>
+			<%= submit_tag('LOG OUT', class: 'logout-link') %> <br>
+		<% end %>
+	</nav>
+	<section class='margin-wrap'>
+		<div class='orig-post-wrapper'>
+			<h1><%=@post.title%></h1>
+			<p><%=@post.content%></p>
+			<p class='author-text'>By <%=@post.user.name%> at <%=@post.created_at.strftime('%b %d, %Y %I:%M%p')%></p>
 
-	<%= form_tag("/posts/#{@post.id}/comments", method: 'post') do %>
-		<%= text_field_tag(:content) %>
-		<%= submit_tag('Reply') %>
-	<% end %>
+			<%= form_tag("/posts/#{@post.id}/comments", method: 'post') do %>
+				<%= text_field_tag(:content) %>
+				<%= submit_tag('Reply') %>
+			<% end %>
+		</div>
 	</section>
 
-	<div class='all-comments-wrapper'>
+		<div class='all-comments-wrapper'>
+			<h4>Comments</h4>
 
-		<% @comments.each do |comment| %>
-			<div class='comment-wrapper'>
-				<p><%=comment.content%></p>
-				<p class='author-text'>By <%=comment.user.name%> at <%=comment.created_at.strftime('%b %d, %Y %I:%M%p')%></p>
+			<% @comments.each do |comment| %>
+				
+				<% def renderComments(comment) %>
+					<div class='comment-wrapper'>
+						<p><%=comment.content%></p>
+						<p class='author-text'>By <%=comment.user.name%> at <%=comment.created_at.strftime('%b %d, %Y %I:%M%p')%></p>
 
-				<%= form_tag("/posts/#{@post.id}/comments", method: 'post', class: 'reply-form') do %>
-					<%= text_field_tag(:content) %>
-					<%= submit_tag('Reply') %>
+						<%if comment.comment(1) %>
+							<%comment.comment.each do |innerComment| %>
+								<% renderComments(innerComment) %>
+							<%end%>
+						<%end%>
+
+						<%= form_tag("/posts/#{@post.id}/comments", method: 'post', class: 'reply-form') do %>
+							<%= text_field_tag(:content) %>
+							<%= hidden_field_tag(:comment_id, comment.id) %>
+							<%= submit_tag('Reply') %>
+						<% end %>
+					</div>
 				<% end %>
-			</div>
-		<% end %>
 
+				<% renderComments(comment)%>
+			<% end %>
+
+		</div>
 	</div>
 	
 </body>

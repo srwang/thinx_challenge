@@ -14,21 +14,14 @@
 		<header>
 			<h1>Melon Forum</h1>
 		</header>
-	</section>
 
-	<section id='all-posts-wrapper'>
-
-		<div class='post-wrapper'>
-			<%= link_to 'ADD NEW POST', new_post_path%>
-		</div>
-
-		<% @posts.each do |post| %>
-			<div class='post-wrapper'>
-				<%= link_to post.title, post_path(post) %>
-				<p><%= truncate(post.content, length: 180, omission: '... (continued)') %></p>
-			</div>
+		<%= form_tag('/posts', method: 'post', class: 'create-post-form') do %>
+			<%= label_tag(:title, 'Title') %> <br>
+			<%= text_field_tag(:title) %> <br>
+			<%= label_tag(:content, 'Content') %> <br>
+			<%= text_field_tag(:content, '', class: 'post-input') %> <br>
+			<%= submit_tag('New Post', class: 'submit-input') %> <br>
 		<% end %>
 	</section>
-	
 </body>
 </html>

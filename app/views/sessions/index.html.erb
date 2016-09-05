@@ -6,7 +6,7 @@
 		<h1>Log In</h1>
 		<p style="color: red"><%= flash[:error] %></p>
 
-		<div id="log-in-box">
+		<div id="log-in-wrapper">
 			<%= form_tag "/sessions" do  %>
 				<%= text_field_tag :username,nil, placeholder: "Username" %><br>
 				<%= password_field_tag :password, nil, placeholder: "Password" %><br>
@@ -16,7 +16,7 @@
 
 		<p style="color: red"><%= flash[:error_two] %></p>
 
-		<div id="sign-up-box">
+		<div id="sign-up-wrapper">
 			<%= form_tag("/sessions/new", method: "get") do  %>
 				<%= text_field_tag :username, nil, placeholder: "Username" %><br>
 				<%= password_field_tag :password, nil, placeholder: "Password" %><br>
