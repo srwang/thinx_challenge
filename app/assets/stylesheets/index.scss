@@ -2,7 +2,7 @@
 body {
 	margin: 0px;
 	font-family: Arial, sans-serif;
-	background-color: rgb(236, 229, 229);
+	background-color: rgb(249, 227, 227);
 }
 
 a {
@@ -10,8 +10,7 @@ a {
 }
 
 nav {
-	//background-color: rgb(173, 91, 91);
-	background-color: brown;
+	background-color: rgb(173, 91, 91);
 	border-bottom: 2px solid rgb(121, 30, 30);
 	padding: 10px;
 
@@ -79,14 +78,18 @@ header {
 	h1 {
 		text-transform: uppercase;
 	}
+
+	.reply-link {
+		color: blue;
+	}
 }
 
 .author-text {
 	font-size: 0.8em;
 }
 
-.reply-form {
-	text-align: right;
+.reply-link {
+	margin: 5px 0px;
 }
 
 //create post page

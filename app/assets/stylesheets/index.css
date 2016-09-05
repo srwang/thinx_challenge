@@ -1,7 +1,7 @@
 body {
   margin: 0px;
   font-family: Arial, sans-serif;
-  background-color: #ece5e5; }
+  background-color: #f9e3e3; }
 
 a {
   color: green; }
@@ -55,12 +55,14 @@ header {
   color: green; }
   .orig-post-wrapper h1 {
     text-transform: uppercase; }
+  .orig-post-wrapper .reply-link {
+    color: blue; }
 
 .author-text {
   font-size: 0.8em; }
 
-.reply-form {
-  text-align: right; }
+.reply-link {
+  margin: 5px 0px; }
 
 .create-post-form input {
   height: 20px;

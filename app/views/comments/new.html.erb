@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title='Melon Forum'>
+	<link rel='stylesheet' href='index.css'>
+</head>
+<body>
+	<nav>
+		<%= form_tag('/sessions/1', method: 'delete') do %>
+			<%= submit_tag('LOG OUT', class: 'logout-link') %> <br>
+		<% end %>
+	</nav>
+	<section class='margin-wrap'>
+		<header>
+			<h1>Melon Forum</h1>
+		</header>
+
+		<%= form_tag("/posts/#{@post.id}/comments", method: 'post', class: 'create-post-form') do %>
+			<%= label_tag(:content, 'Comment') %> <br>
+			<%= text_field_tag(:content, '', class: 'post-input') %> <br>
+			<%= hidden_field_tag(:comment_id, @comment_id) %>
+			<%= submit_tag('Reply', class: 'submit-input') %>
+		<% end %>
+	</section>
+</body>
+</html>

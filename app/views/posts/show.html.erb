@@ -16,10 +16,7 @@
 			<p><%=@post.content%></p>
 			<p class='author-text'>By <%=@post.user.name%> at <%=@post.created_at.strftime('%b %d, %Y %I:%M%p')%></p>
 
-			<%= form_tag("/posts/#{@post.id}/comments", method: 'post') do %>
-				<%= text_field_tag(:content) %>
-				<%= submit_tag('Reply') %>
-			<% end %>
+			<%= link_to 'Reply', new_post_comment_path(@post.id), class: 'reply-link' %>
 		</div>
 	</section>
 
@@ -39,11 +36,7 @@
 							<%end%>
 						<%end%>
 
-						<%= form_tag("/posts/#{@post.id}/comments", method: 'post', class: 'reply-form') do %>
-							<%= text_field_tag(:content) %>
-							<%= hidden_field_tag(:comment_id, comment.id) %>
-							<%= submit_tag('Reply') %>
-						<% end %>
+						<%= link_to 'Reply', "/posts/#{@post.id}/comments/new?comment_id=#{comment.id}", class: 'reply-link' %>
 					</div>
 				<% end %>
 

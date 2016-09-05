@@ -20,11 +20,6 @@ class PostsController < ApplicationController
 		if session[:user_id]
 			@post = Post.find(params[:id])
 			@comments = @post.comments
-
-			puts '**************'
-			@comments.each do |comment|
-				puts comment.comment.length
-			end
 		else
 			redirect_to sessions_path
 		end
