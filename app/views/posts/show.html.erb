@@ -11,11 +11,16 @@
 		<% end %>
 	</nav>
 	<section class='margin-wrap'>
-		<div class='orig-post-wrapper'>
-			<h1><%=@post.title%></h1>
-			<p><%=@post.content%></p>
-			<p class='author-text'>By <%=@post.user.name%> at <%=@post.created_at.strftime('%b %d, %Y %I:%M%p')%></p>
+		<div class='orig-post-wrapper cf'>
+			<% if @post.img_url %>
+				<img src='<%=@post.img_url%>'></img>
+			<% end %>
+			<div class='orig-post-text'>
+				<h1><%=@post.title%></h1>
+				<p><%=@post.content%></p>
+				<p class='author-text'>By <%=@post.user.name%> at <%=@post.created_at.strftime('%b %d, %Y %I:%M%p')%></p>
 
+			</div>
 			<%= link_to 'Reply', new_post_comment_path(@post.id), class: 'reply-link' %>
 		</div>
 	</section>

@@ -1,3 +1,13 @@
+.cf:before,
+.cf:after {
+  content: " ";
+  /* 1 */
+  display: table;
+  /* 2 */ }
+
+.cf:after {
+  clear: both; }
+
 body {
   margin: 0px;
   font-family: Arial, sans-serif;
@@ -53,10 +63,14 @@ header {
   font-size: 1.2em;
   margin-top: 70px;
   color: green; }
+  .orig-post-wrapper img {
+    max-width: 300px;
+    float: left;
+    margin-right: 40px; }
   .orig-post-wrapper h1 {
     text-transform: uppercase; }
   .orig-post-wrapper .reply-link {
-    color: blue; }
+    float: right; }
 
 .author-text {
   font-size: 0.8em; }

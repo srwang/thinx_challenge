@@ -11,9 +11,9 @@ User.create(name: 'firstUser', password: 'firstUser');
 
 User.create(name: 'secondUser', password: 'secondUser');
 
-Post.create(title: 'watermelon', content: 'what are some creative ways to prepare it?', user_id: 1);
+Post.create(title: 'watermelon', content: 'what are some creative ways to prepare it?', img_url: 'https://s3.amazonaws.com/thinx-challenge-bucket/tilmans+watermelon.jpg', user_id: 1);
 
-Post.create(title: 'bitter melon', content: 'does anyone know how to get rid of the bitter when you stir fry?', user_id: 2);
+Post.create(title: 'bitter melon', content: 'does anyone know how to get rid of the bitter when you stir fry?', img_url: 'https://s3.amazonaws.com/thinx-challenge-bucket/bitter+melon.jpg', user_id: 2);
 
 Post.create(title: 'Ipsum', content: ' Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.', user_id: 2)
 

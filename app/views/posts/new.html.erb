@@ -15,11 +15,13 @@
 			<h1>Melon Forum</h1>
 		</header>
 
-		<%= form_tag('/posts', method: 'post', class: 'create-post-form') do %>
+		<%= form_tag('/posts', method: 'post', class: 'create-post-form', multipart: true) do %>
 			<%= label_tag(:title, 'Title') %> <br>
 			<%= text_field_tag(:title) %> <br>
 			<%= label_tag(:content, 'Content') %> <br>
 			<%= text_field_tag(:content, '', class: 'post-input') %> <br>
+			<%= label_tag(:title, 'Image Upload') %> <br>
+			<%= file_field_tag(:file)  %> <br>
 			<%= submit_tag('New Post', class: 'submit-input') %> <br>
 		<% end %>
 	</section>

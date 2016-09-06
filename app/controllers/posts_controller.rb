@@ -12,7 +12,16 @@ class PostsController < ApplicationController
 	end
 
 	def create
-		Post.create(title: params[:title], content: params[:content], user_id: session[:user_id])
+		#write img file to bucket
+		obj = S3_BUCKET.objects[params[:file].original_filename]
+
+		obj.write(
+			file: params[:file],
+			acl: :public_read
+		)
+
+		#save post to db, including new img url
+		Post.create(title: params[:title], content: params[:content], user_id: session[:user_id], img_url: obj.public_url)
 		redirect_to posts_path
 	end
 
@@ -29,7 +38,7 @@ class PostsController < ApplicationController
 private
 
 	def post_params
-		params.require(:post).permit(:title, :content, :user_id)
+		params.require(:post).permit(:title, :content, :user_id, :img_url)
 	end
 
 end

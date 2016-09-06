@@ -1,4 +1,14 @@
 //shared
+.cf:before,
+.cf:after {
+    content: " "; /* 1 */
+    display: table; /* 2 */
+}
+
+.cf:after {
+    clear: both;
+}
+
 body {
 	margin: 0px;
 	font-family: Arial, sans-serif;
@@ -75,12 +85,18 @@ header {
 	margin-top: 70px;
 	color: green;
 
+	img {
+		max-width: 300px;
+		float: left;
+		margin-right: 40px;
+	}
+
 	h1 {
 		text-transform: uppercase;
 	}
 
 	.reply-link {
-		color: blue;
+		float: right;
 	}
 }
 
