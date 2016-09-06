@@ -18,7 +18,9 @@ class SessionsController < ApplicationController
     def new
         if params[:password] == params[:password_confirmation]
             if User.create({name: params[:username], password: params[:password]}).valid?
+                user = User.find_by({name: params[:username]})
                 session[:user_id] = user.id
+                redirect_to root_path
             else 
                 flash[:error_two] = 'Sorry, #{params[:username]} has been taken'
                 redirect_to(:back) 
