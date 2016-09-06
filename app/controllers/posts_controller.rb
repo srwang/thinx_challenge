@@ -13,15 +13,20 @@ class PostsController < ApplicationController
 
 	def create
 		#write img file to bucket
-		obj = S3_BUCKET.objects[params[:file].original_filename]
 
-		obj.write(
-			file: params[:file],
-			acl: :public_read
-		)
+		if params[:file]
+			obj = S3_BUCKET.objects[params[:file].original_filename]
 
-		#save post to db, including new img url
-		Post.create(title: params[:title], content: params[:content], user_id: session[:user_id], img_url: obj.public_url)
+			obj.write(
+				file: params[:file],
+				acl: :public_read
+			)
+
+			#save post to db, including new img url
+			Post.create(title: params[:title], content: params[:content], user_id: session[:user_id], img_url: obj.public_url)
+		else 
+			Post.create(title: params[:title], content: params[:content], user_id: session[:user_id])
+		end
 		redirect_to posts_path
 	end
 
